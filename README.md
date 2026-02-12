@@ -68,9 +68,9 @@ When you compile and generate smart contract artifacts, your frontend component 
 
 The frontend starter also provides an example of interactions with your ClubledgerClient in [`AppCalls.tsx`](projects/clubledger-frontend/src/components/AppCalls.tsx) component by default.
 
-System Architecture
+###System Architecture
 
-Frontend (React + Tailwind):
+##Frontend (React + Tailwind):
  Student dashboard
  Admin dashboard
  Event creation page
@@ -78,19 +78,19 @@ Frontend (React + Tailwind):
  Sponsor panel
  Smart Contracts (Python + AlgoKit)
 
-Club Account Contract:
+##Club Account Contract:
  Event Contract
  Ticket Sale Logic
  Sponsor Fund Logic
  Expense Approval Logic
 
-Blockchain Layer (Algorand):
+##Blockchain Layer (Algorand):
  Stores financial transactions
  Verifies ticket payments
  Maintains immutable ledger
 
 
-Functional Modules
+###Functional Modules
 1. Club Account Module:
   Create club treasury wallet
   View balance
