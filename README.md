@@ -1,6 +1,24 @@
-# clubledger
+ClubLedger – Blockchain Based College Club Finance & Event Management System
 
-This starter full stack project has been generated using AlgoKit. See below for default getting started instructions.
+This starter full stack project has been generated using AlgoKit. See below for default getting started instructions. ClubLedger is a decentralized finance and event management platform built on the Algorand blockchain to ensure transparency, trust, and tamper-proof financial records for college clubs.
+
+It solves real-world problems in college event management such as:
+  1.Misuse of funds
+  2.Lack of sponsor transparency
+  3.Manual ticket accounting
+  4.Unclear expense tracking
+  5.Trust issues between students and club admins
+ClubLedger makes all financial activities verifiable on-chain.
+
+Project Objective
+  To build a transparent, decentralized financial ledger system for:
+    1.Club account management
+    2.Event fund collection
+    3.Sponsor tracking
+    4.Ticket selling to students
+    5.Expense management
+    6.Real-time auditability
+Using Algorand Smart Contracts (ASC1) and a React frontend.
 
 ## Setup
 
@@ -27,7 +45,7 @@ This project uses [GitHub Actions](https://docs.github.com/en/actions/learn-gith
 
 For pushes to `main` branch, after the above checks pass, the following deployment actions are performed:
   - The smart contract(s) are deployed to TestNet using [AlgoNode](https://algonode.io).
-  - The frontend application is deployed to a provider of your choice (Netlify, Vercel, etc.). See [frontend README](frontend/README.md) for more information.
+  - The frontend application is deployed to a provider of your choice (Vercel). See [frontend README](frontend/README.md) for more information.
 
 > Please note deployment of smart contracts is done via `algokit deploy` command which can be invoked both via CI as seen on this project, or locally. For more information on how to use `algokit deploy` please see [AlgoKit documentation](https://github.com/algorandfoundation/algokit-cli/blob/main/docs/features/deploy.md).
 
@@ -50,6 +68,71 @@ When you compile and generate smart contract artifacts, your frontend component 
 
 The frontend starter also provides an example of interactions with your ClubledgerClient in [`AppCalls.tsx`](projects/clubledger-frontend/src/components/AppCalls.tsx) component by default.
 
-## Next Steps
+System Architecture
 
-You can take this project and customize it to build your own decentralized applications on Algorand. Make sure to understand how to use AlgoKit and how to write smart contracts for Algorand before you start.
+Frontend (React + Tailwind):
+ Student dashboard
+ Admin dashboard
+ Event creation page
+ Ticket buying interface
+ Sponsor panel
+ Smart Contracts (Python + AlgoKit)
+
+Club Account Contract:
+ Event Contract
+ Ticket Sale Logic
+ Sponsor Fund Logic
+ Expense Approval Logic
+
+Blockchain Layer (Algorand):
+ Stores financial transactions
+ Verifies ticket payments
+ Maintains immutable ledger
+
+
+Functional Modules
+1. Club Account Module:
+  Create club treasury wallet
+  View balance
+  Track all transactions on-chain
+  Immutable expense log
+
+2. Event Management Module:
+Admin can:
+  Create event
+  Define ticket price
+  Set maximum tickets
+  Add sponsors
+Smart Contract stores:
+  Event ID
+  Ticket limit
+  Total collected funds
+  Sponsor details
+
+3. Ticket Selling Module
+Process:
+  Student connects wallet
+  Approves payment
+  Atomic transaction executes
+  Ticket ASA transferred
+  Contract updates ticket count
+All transactions recorded on-chain.
+
+4. Sponsor Management Module
+Sponsors can:
+  Fund event wallet
+  Receive on-chain proof
+  View fund usage
+Ensures:
+  Transparent sponsorship
+  Tamper-proof contribution records
+
+5. Expense Tracking Module
+Admin submits:
+  Expense description
+   Amount
+  Vendor details
+Smart contract:
+  Deducts from treasury
+  Logs transaction
+  Makes expense publicly auditable
