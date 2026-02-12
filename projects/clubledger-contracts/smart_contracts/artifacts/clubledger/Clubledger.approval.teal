@@ -1,0 +1,150 @@
+#pragma version 11
+#pragma typetrack false
+
+// algopy.arc4.ARC4Contract.approval_program() -> uint64:
+main:
+    intcblock 0 1 8
+    bytecblock "total_funds" 0x151f7c75
+    txn ApplicationID
+    bnz main_after_if_else@2
+    // smart_contracts/clubledger/contract.py:6-7
+    // # ✅ Correct: Define inside __init__ with 'self.'
+    // self.total_funds = GlobalState(UInt64(0))
+    bytec_0 // "total_funds"
+    intc_0 // 0
+    app_global_put
+
+main_after_if_else@2:
+    // smart_contracts/clubledger/contract.py:3
+    // class Clubledger(ARC4Contract):
+    txn NumAppArgs
+    bz main___algopy_default_create@13
+    txn OnCompletion
+    !
+    assert
+    txn ApplicationID
+    assert
+    pushbytess 0x43744148 0x6de59c88 0x471afeeb 0x139dd54e // method "add_funds(uint64)uint64", method "sponsor_fund(uint64)void", method "transfer_to_club(uint64)void", method "get_total_funds()uint64"
+    txna ApplicationArgs 0
+    match add_funds sponsor_fund transfer_to_club get_total_funds
+    err
+
+main___algopy_default_create@13:
+    txn OnCompletion
+    !
+    txn ApplicationID
+    !
+    &&
+    return
+
+
+// smart_contracts.clubledger.contract.Clubledger.add_funds[routing]() -> void:
+add_funds:
+    // smart_contracts/clubledger/contract.py:9
+    // @arc4.abimethod
+    txna ApplicationArgs 1
+    dup
+    len
+    intc_2 // 8
+    ==
+    assert // invalid number of bytes for arc4.uint64
+    btoi
+    // smart_contracts/clubledger/contract.py:11
+    // self.total_funds.value += amount
+    intc_0 // 0
+    bytec_0 // "total_funds"
+    app_global_get_ex
+    assert // check self.total_funds exists
+    +
+    bytec_0 // "total_funds"
+    dig 1
+    app_global_put
+    // smart_contracts/clubledger/contract.py:9
+    // @arc4.abimethod
+    itob
+    bytec_1 // 0x151f7c75
+    swap
+    concat
+    log
+    intc_1 // 1
+    return
+
+
+// smart_contracts.clubledger.contract.Clubledger.sponsor_fund[routing]() -> void:
+sponsor_fund:
+    // smart_contracts/clubledger/contract.py:14
+    // @arc4.abimethod
+    txna ApplicationArgs 1
+    dup
+    len
+    intc_2 // 8
+    ==
+    assert // invalid number of bytes for arc4.uint64
+    btoi
+    // smart_contracts/clubledger/contract.py:16
+    // self.total_funds.value = self.total_funds.value + amount
+    intc_0 // 0
+    bytec_0 // "total_funds"
+    app_global_get_ex
+    assert // check self.total_funds exists
+    +
+    bytec_0 // "total_funds"
+    swap
+    app_global_put
+    // smart_contracts/clubledger/contract.py:14
+    // @arc4.abimethod
+    intc_1 // 1
+    return
+
+
+// smart_contracts.clubledger.contract.Clubledger.transfer_to_club[routing]() -> void:
+transfer_to_club:
+    // smart_contracts/clubledger/contract.py:18
+    // @arc4.abimethod
+    txna ApplicationArgs 1
+    dup
+    len
+    intc_2 // 8
+    ==
+    assert // invalid number of bytes for arc4.uint64
+    btoi
+    // smart_contracts/clubledger/contract.py:20
+    // assert self.total_funds.value >= amount
+    intc_0 // 0
+    bytec_0 // "total_funds"
+    app_global_get_ex
+    assert // check self.total_funds exists
+    dup
+    dig 2
+    >=
+    assert
+    // smart_contracts/clubledger/contract.py:21
+    // self.total_funds.value = self.total_funds.value - amount
+    swap
+    -
+    bytec_0 // "total_funds"
+    swap
+    app_global_put
+    // smart_contracts/clubledger/contract.py:18
+    // @arc4.abimethod
+    intc_1 // 1
+    return
+
+
+// smart_contracts.clubledger.contract.Clubledger.get_total_funds[routing]() -> void:
+get_total_funds:
+    // smart_contracts/clubledger/contract.py:25
+    // return self.total_funds.value
+    intc_0 // 0
+    bytec_0 // "total_funds"
+    app_global_get_ex
+    assert // check self.total_funds exists
+    // smart_contracts/clubledger/contract.py:23
+    // @arc4.abimethod
+    itob
+    bytec_1 // 0x151f7c75
+    swap
+    concat
+    log
+    intc_1 // 1
+    return

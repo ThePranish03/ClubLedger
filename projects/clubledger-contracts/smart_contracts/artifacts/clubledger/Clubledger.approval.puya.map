@@ -1,0 +1,880 @@
+{
+  "version": 3,
+  "sources": [
+    "../../clubledger/contract.py"
+  ],
+  "mappings": ";;;;;;;;;;;;;;;;;;;;;;;;;;;;;;AAMQ;AAA+B;AAA/B;AAJR;;AAAA;;;AAAA;;AAAA;AAAA;AAAA;;AAAA;AAAA;;;;;;;;;;;;;;;;;;;;;;AAAA;;;AAAA;;;;;;;;;;AAAA;;;;;;;;;AAMK;;;AAAA;AAAA;AAAA;AAAA;AAAA;AAAA;AAEG;AAAA;AAAA;AAAA;AAAA;AAAA;AAAA;;AAAA;AAFH;AAAA;AAAA;AAAA;AAAA;AAAA;AAAA;AAKA;;;AAAA;AAAA;AAAA;AAAA;AAAA;AAAA;AAE4B;AAAA;AAAA;AAAA;AAAA;AAAzB;AAAA;AAAA;AAFH;AAAA;AAIA;;;AAAA;AAAA;AAAA;AAAA;AAAA;AAAA;AAEU;AAAA;AAAA;AAAA;AAAA;AAAA;;AAAA;AAAP;AACyB;AAAA;AAAzB;AAAA;AAAA;AAHH;AAAA;AAOU;AAAA;AAAA;AAAA;AAFV;AAAA;AAAA;AAAA;AAAA;AAAA;AAAA",
+  "op_pc_offset": 0,
+  "pc_events": {
+    "1": {
+      "subroutine": "algopy.arc4.ARC4Contract.approval_program",
+      "params": {},
+      "block": "main",
+      "stack_in": [],
+      "op": "intcblock 0 1 8"
+    },
+    "6": {
+      "op": "bytecblock \"total_funds\" 0x151f7c75"
+    },
+    "25": {
+      "op": "txn ApplicationID",
+      "defined_out": [
+        "tmp%0#0"
+      ],
+      "stack_out": [
+        "tmp%0#0"
+      ]
+    },
+    "27": {
+      "op": "bnz main_after_if_else@2",
+      "stack_out": []
+    },
+    "30": {
+      "op": "bytec_0 // \"total_funds\"",
+      "defined_out": [
+        "\"total_funds\""
+      ],
+      "stack_out": [
+        "\"total_funds\""
+      ]
+    },
+    "31": {
+      "op": "intc_0 // 0",
+      "defined_out": [
+        "\"total_funds\"",
+        "0"
+      ],
+      "stack_out": [
+        "\"total_funds\"",
+        "0"
+      ]
+    },
+    "32": {
+      "op": "app_global_put",
+      "stack_out": []
+    },
+    "33": {
+      "block": "main_after_if_else@2",
+      "stack_in": [],
+      "op": "txn NumAppArgs",
+      "defined_out": [
+        "tmp%0#1"
+      ],
+      "stack_out": [
+        "tmp%0#1"
+      ]
+    },
+    "35": {
+      "op": "bz main___algopy_default_create@13",
+      "stack_out": []
+    },
+    "38": {
+      "op": "txn OnCompletion",
+      "defined_out": [
+        "tmp%2#0"
+      ],
+      "stack_out": [
+        "tmp%2#0"
+      ]
+    },
+    "40": {
+      "op": "!",
+      "defined_out": [
+        "tmp%3#0"
+      ],
+      "stack_out": [
+        "tmp%3#0"
+      ]
+    },
+    "41": {
+      "op": "assert",
+      "stack_out": []
+    },
+    "42": {
+      "op": "txn ApplicationID",
+      "defined_out": [
+        "tmp%4#0"
+      ],
+      "stack_out": [
+        "tmp%4#0"
+      ]
+    },
+    "44": {
+      "op": "assert",
+      "stack_out": []
+    },
+    "45": {
+      "op": "pushbytess 0x43744148 0x6de59c88 0x471afeeb 0x139dd54e // method \"add_funds(uint64)uint64\", method \"sponsor_fund(uint64)void\", method \"transfer_to_club(uint64)void\", method \"get_total_funds()uint64\"",
+      "defined_out": [
+        "Method(add_funds(uint64)uint64)",
+        "Method(get_total_funds()uint64)",
+        "Method(sponsor_fund(uint64)void)",
+        "Method(transfer_to_club(uint64)void)"
+      ],
+      "stack_out": [
+        "Method(add_funds(uint64)uint64)",
+        "Method(sponsor_fund(uint64)void)",
+        "Method(transfer_to_club(uint64)void)",
+        "Method(get_total_funds()uint64)"
+      ]
+    },
+    "67": {
+      "op": "txna ApplicationArgs 0",
+      "defined_out": [
+        "Method(add_funds(uint64)uint64)",
+        "Method(get_total_funds()uint64)",
+        "Method(sponsor_fund(uint64)void)",
+        "Method(transfer_to_club(uint64)void)",
+        "tmp%6#0"
+      ],
+      "stack_out": [
+        "Method(add_funds(uint64)uint64)",
+        "Method(sponsor_fund(uint64)void)",
+        "Method(transfer_to_club(uint64)void)",
+        "Method(get_total_funds()uint64)",
+        "tmp%6#0"
+      ]
+    },
+    "70": {
+      "op": "match add_funds sponsor_fund transfer_to_club get_total_funds",
+      "stack_out": []
+    },
+    "80": {
+      "op": "err"
+    },
+    "81": {
+      "block": "main___algopy_default_create@13",
+      "stack_in": [],
+      "op": "txn OnCompletion",
+      "defined_out": [
+        "tmp%7#0"
+      ],
+      "stack_out": [
+        "tmp%7#0"
+      ]
+    },
+    "83": {
+      "op": "!",
+      "defined_out": [
+        "tmp%8#0"
+      ],
+      "stack_out": [
+        "tmp%8#0"
+      ]
+    },
+    "84": {
+      "op": "txn ApplicationID",
+      "defined_out": [
+        "tmp%8#0",
+        "tmp%9#0"
+      ],
+      "stack_out": [
+        "tmp%8#0",
+        "tmp%9#0"
+      ]
+    },
+    "86": {
+      "op": "!",
+      "defined_out": [
+        "tmp%10#0",
+        "tmp%8#0"
+      ],
+      "stack_out": [
+        "tmp%8#0",
+        "tmp%10#0"
+      ]
+    },
+    "87": {
+      "op": "&&",
+      "defined_out": [
+        "tmp%11#0"
+      ],
+      "stack_out": [
+        "tmp%11#0"
+      ]
+    },
+    "88": {
+      "op": "return",
+      "defined_out": [],
+      "stack_out": []
+    },
+    "89": {
+      "subroutine": "smart_contracts.clubledger.contract.Clubledger.add_funds[routing]",
+      "params": {},
+      "block": "add_funds",
+      "stack_in": [],
+      "op": "txna ApplicationArgs 1",
+      "defined_out": [
+        "tmp%0#0"
+      ],
+      "stack_out": [
+        "tmp%0#0"
+      ]
+    },
+    "92": {
+      "op": "dup",
+      "defined_out": [
+        "tmp%0#0",
+        "tmp%0#0 (copy)"
+      ],
+      "stack_out": [
+        "tmp%0#0",
+        "tmp%0#0 (copy)"
+      ]
+    },
+    "93": {
+      "op": "len",
+      "defined_out": [
+        "len%0#0",
+        "tmp%0#0"
+      ],
+      "stack_out": [
+        "tmp%0#0",
+        "len%0#0"
+      ]
+    },
+    "94": {
+      "op": "intc_2 // 8",
+      "defined_out": [
+        "8",
+        "len%0#0",
+        "tmp%0#0"
+      ],
+      "stack_out": [
+        "tmp%0#0",
+        "len%0#0",
+        "8"
+      ]
+    },
+    "95": {
+      "op": "==",
+      "defined_out": [
+        "eq%0#0",
+        "tmp%0#0"
+      ],
+      "stack_out": [
+        "tmp%0#0",
+        "eq%0#0"
+      ]
+    },
+    "96": {
+      "error": "invalid number of bytes for arc4.uint64",
+      "op": "assert // invalid number of bytes for arc4.uint64",
+      "stack_out": [
+        "tmp%0#0"
+      ]
+    },
+    "97": {
+      "op": "btoi",
+      "defined_out": [
+        "amount#0"
+      ],
+      "stack_out": [
+        "amount#0"
+      ]
+    },
+    "98": {
+      "op": "intc_0 // 0",
+      "defined_out": [
+        "0",
+        "amount#0"
+      ],
+      "stack_out": [
+        "amount#0",
+        "0"
+      ]
+    },
+    "99": {
+      "op": "bytec_0 // \"total_funds\"",
+      "defined_out": [
+        "\"total_funds\"",
+        "0",
+        "amount#0"
+      ],
+      "stack_out": [
+        "amount#0",
+        "0",
+        "\"total_funds\""
+      ]
+    },
+    "100": {
+      "op": "app_global_get_ex",
+      "defined_out": [
+        "amount#0",
+        "maybe_exists%0#0",
+        "maybe_value%0#0"
+      ],
+      "stack_out": [
+        "amount#0",
+        "maybe_value%0#0",
+        "maybe_exists%0#0"
+      ]
+    },
+    "101": {
+      "error": "check self.total_funds exists",
+      "op": "assert // check self.total_funds exists",
+      "stack_out": [
+        "amount#0",
+        "maybe_value%0#0"
+      ]
+    },
+    "102": {
+      "op": "+",
+      "defined_out": [
+        "tmp%0#1"
+      ],
+      "stack_out": [
+        "tmp%0#1"
+      ]
+    },
+    "103": {
+      "op": "bytec_0 // \"total_funds\"",
+      "stack_out": [
+        "tmp%0#1",
+        "\"total_funds\""
+      ]
+    },
+    "104": {
+      "op": "dig 1",
+      "defined_out": [
+        "\"total_funds\"",
+        "tmp%0#1",
+        "tmp%0#1 (copy)"
+      ],
+      "stack_out": [
+        "tmp%0#1",
+        "\"total_funds\"",
+        "tmp%0#1 (copy)"
+      ]
+    },
+    "106": {
+      "op": "app_global_put",
+      "stack_out": [
+        "tmp%0#1"
+      ]
+    },
+    "107": {
+      "op": "itob",
+      "defined_out": [
+        "aggregate%val_as_bytes%0#0"
+      ],
+      "stack_out": [
+        "aggregate%val_as_bytes%0#0"
+      ]
+    },
+    "108": {
+      "op": "bytec_1 // 0x151f7c75",
+      "defined_out": [
+        "0x151f7c75",
+        "aggregate%val_as_bytes%0#0"
+      ],
+      "stack_out": [
+        "aggregate%val_as_bytes%0#0",
+        "0x151f7c75"
+      ]
+    },
+    "109": {
+      "op": "swap",
+      "stack_out": [
+        "0x151f7c75",
+        "aggregate%val_as_bytes%0#0"
+      ]
+    },
+    "110": {
+      "op": "concat",
+      "defined_out": [
+        "tmp%4#0"
+      ],
+      "stack_out": [
+        "tmp%4#0"
+      ]
+    },
+    "111": {
+      "op": "log",
+      "stack_out": []
+    },
+    "112": {
+      "op": "intc_1 // 1",
+      "defined_out": [
+        "1"
+      ],
+      "stack_out": [
+        "1"
+      ]
+    },
+    "113": {
+      "op": "return",
+      "stack_out": []
+    },
+    "114": {
+      "subroutine": "smart_contracts.clubledger.contract.Clubledger.sponsor_fund[routing]",
+      "params": {},
+      "block": "sponsor_fund",
+      "stack_in": [],
+      "op": "txna ApplicationArgs 1",
+      "defined_out": [
+        "tmp%0#0"
+      ],
+      "stack_out": [
+        "tmp%0#0"
+      ]
+    },
+    "117": {
+      "op": "dup",
+      "defined_out": [
+        "tmp%0#0",
+        "tmp%0#0 (copy)"
+      ],
+      "stack_out": [
+        "tmp%0#0",
+        "tmp%0#0 (copy)"
+      ]
+    },
+    "118": {
+      "op": "len",
+      "defined_out": [
+        "len%0#0",
+        "tmp%0#0"
+      ],
+      "stack_out": [
+        "tmp%0#0",
+        "len%0#0"
+      ]
+    },
+    "119": {
+      "op": "intc_2 // 8",
+      "defined_out": [
+        "8",
+        "len%0#0",
+        "tmp%0#0"
+      ],
+      "stack_out": [
+        "tmp%0#0",
+        "len%0#0",
+        "8"
+      ]
+    },
+    "120": {
+      "op": "==",
+      "defined_out": [
+        "eq%0#0",
+        "tmp%0#0"
+      ],
+      "stack_out": [
+        "tmp%0#0",
+        "eq%0#0"
+      ]
+    },
+    "121": {
+      "error": "invalid number of bytes for arc4.uint64",
+      "op": "assert // invalid number of bytes for arc4.uint64",
+      "stack_out": [
+        "tmp%0#0"
+      ]
+    },
+    "122": {
+      "op": "btoi",
+      "defined_out": [
+        "amount#0"
+      ],
+      "stack_out": [
+        "amount#0"
+      ]
+    },
+    "123": {
+      "op": "intc_0 // 0",
+      "defined_out": [
+        "0",
+        "amount#0"
+      ],
+      "stack_out": [
+        "amount#0",
+        "0"
+      ]
+    },
+    "124": {
+      "op": "bytec_0 // \"total_funds\"",
+      "defined_out": [
+        "\"total_funds\"",
+        "0",
+        "amount#0"
+      ],
+      "stack_out": [
+        "amount#0",
+        "0",
+        "\"total_funds\""
+      ]
+    },
+    "125": {
+      "op": "app_global_get_ex",
+      "defined_out": [
+        "amount#0",
+        "maybe_exists%0#0",
+        "maybe_value%0#0"
+      ],
+      "stack_out": [
+        "amount#0",
+        "maybe_value%0#0",
+        "maybe_exists%0#0"
+      ]
+    },
+    "126": {
+      "error": "check self.total_funds exists",
+      "op": "assert // check self.total_funds exists",
+      "stack_out": [
+        "amount#0",
+        "maybe_value%0#0"
+      ]
+    },
+    "127": {
+      "op": "+",
+      "defined_out": [
+        "tmp%0#1"
+      ],
+      "stack_out": [
+        "tmp%0#1"
+      ]
+    },
+    "128": {
+      "op": "bytec_0 // \"total_funds\"",
+      "stack_out": [
+        "tmp%0#1",
+        "\"total_funds\""
+      ]
+    },
+    "129": {
+      "op": "swap",
+      "stack_out": [
+        "\"total_funds\"",
+        "tmp%0#1"
+      ]
+    },
+    "130": {
+      "op": "app_global_put",
+      "stack_out": []
+    },
+    "131": {
+      "op": "intc_1 // 1",
+      "defined_out": [
+        "1"
+      ],
+      "stack_out": [
+        "1"
+      ]
+    },
+    "132": {
+      "op": "return",
+      "stack_out": []
+    },
+    "133": {
+      "subroutine": "smart_contracts.clubledger.contract.Clubledger.transfer_to_club[routing]",
+      "params": {},
+      "block": "transfer_to_club",
+      "stack_in": [],
+      "op": "txna ApplicationArgs 1",
+      "defined_out": [
+        "tmp%0#0"
+      ],
+      "stack_out": [
+        "tmp%0#0"
+      ]
+    },
+    "136": {
+      "op": "dup",
+      "defined_out": [
+        "tmp%0#0",
+        "tmp%0#0 (copy)"
+      ],
+      "stack_out": [
+        "tmp%0#0",
+        "tmp%0#0 (copy)"
+      ]
+    },
+    "137": {
+      "op": "len",
+      "defined_out": [
+        "len%0#0",
+        "tmp%0#0"
+      ],
+      "stack_out": [
+        "tmp%0#0",
+        "len%0#0"
+      ]
+    },
+    "138": {
+      "op": "intc_2 // 8",
+      "defined_out": [
+        "8",
+        "len%0#0",
+        "tmp%0#0"
+      ],
+      "stack_out": [
+        "tmp%0#0",
+        "len%0#0",
+        "8"
+      ]
+    },
+    "139": {
+      "op": "==",
+      "defined_out": [
+        "eq%0#0",
+        "tmp%0#0"
+      ],
+      "stack_out": [
+        "tmp%0#0",
+        "eq%0#0"
+      ]
+    },
+    "140": {
+      "error": "invalid number of bytes for arc4.uint64",
+      "op": "assert // invalid number of bytes for arc4.uint64",
+      "stack_out": [
+        "tmp%0#0"
+      ]
+    },
+    "141": {
+      "op": "btoi",
+      "defined_out": [
+        "amount#0"
+      ],
+      "stack_out": [
+        "amount#0"
+      ]
+    },
+    "142": {
+      "op": "intc_0 // 0",
+      "defined_out": [
+        "0",
+        "amount#0"
+      ],
+      "stack_out": [
+        "amount#0",
+        "0"
+      ]
+    },
+    "143": {
+      "op": "bytec_0 // \"total_funds\"",
+      "defined_out": [
+        "\"total_funds\"",
+        "0",
+        "amount#0"
+      ],
+      "stack_out": [
+        "amount#0",
+        "0",
+        "\"total_funds\""
+      ]
+    },
+    "144": {
+      "op": "app_global_get_ex",
+      "defined_out": [
+        "amount#0",
+        "maybe_exists%0#0",
+        "maybe_value%0#0"
+      ],
+      "stack_out": [
+        "amount#0",
+        "maybe_value%0#0",
+        "maybe_exists%0#0"
+      ]
+    },
+    "145": {
+      "error": "check self.total_funds exists",
+      "op": "assert // check self.total_funds exists",
+      "stack_out": [
+        "amount#0",
+        "maybe_value%0#0"
+      ]
+    },
+    "146": {
+      "op": "dup",
+      "defined_out": [
+        "amount#0",
+        "maybe_value%0#0",
+        "maybe_value%0#0 (copy)"
+      ],
+      "stack_out": [
+        "amount#0",
+        "maybe_value%0#0",
+        "maybe_value%0#0 (copy)"
+      ]
+    },
+    "147": {
+      "op": "dig 2",
+      "defined_out": [
+        "amount#0",
+        "amount#0 (copy)",
+        "maybe_value%0#0",
+        "maybe_value%0#0 (copy)"
+      ],
+      "stack_out": [
+        "amount#0",
+        "maybe_value%0#0",
+        "maybe_value%0#0 (copy)",
+        "amount#0 (copy)"
+      ]
+    },
+    "149": {
+      "op": ">=",
+      "defined_out": [
+        "amount#0",
+        "maybe_value%0#0",
+        "tmp%0#1"
+      ],
+      "stack_out": [
+        "amount#0",
+        "maybe_value%0#0",
+        "tmp%0#1"
+      ]
+    },
+    "150": {
+      "op": "assert",
+      "stack_out": [
+        "amount#0",
+        "maybe_value%0#0"
+      ]
+    },
+    "151": {
+      "op": "swap",
+      "stack_out": [
+        "maybe_value%0#0",
+        "amount#0"
+      ]
+    },
+    "152": {
+      "op": "-",
+      "defined_out": [
+        "tmp%1#1"
+      ],
+      "stack_out": [
+        "tmp%1#1"
+      ]
+    },
+    "153": {
+      "op": "bytec_0 // \"total_funds\"",
+      "stack_out": [
+        "tmp%1#1",
+        "\"total_funds\""
+      ]
+    },
+    "154": {
+      "op": "swap",
+      "stack_out": [
+        "\"total_funds\"",
+        "tmp%1#1"
+      ]
+    },
+    "155": {
+      "op": "app_global_put",
+      "stack_out": []
+    },
+    "156": {
+      "op": "intc_1 // 1",
+      "defined_out": [
+        "1"
+      ],
+      "stack_out": [
+        "1"
+      ]
+    },
+    "157": {
+      "op": "return",
+      "stack_out": []
+    },
+    "158": {
+      "subroutine": "smart_contracts.clubledger.contract.Clubledger.get_total_funds[routing]",
+      "params": {},
+      "block": "get_total_funds",
+      "stack_in": [],
+      "op": "intc_0 // 0",
+      "defined_out": [
+        "0"
+      ],
+      "stack_out": [
+        "0"
+      ]
+    },
+    "159": {
+      "op": "bytec_0 // \"total_funds\"",
+      "defined_out": [
+        "\"total_funds\"",
+        "0"
+      ],
+      "stack_out": [
+        "0",
+        "\"total_funds\""
+      ]
+    },
+    "160": {
+      "op": "app_global_get_ex",
+      "defined_out": [
+        "maybe_exists%0#0",
+        "maybe_value%0#0"
+      ],
+      "stack_out": [
+        "maybe_value%0#0",
+        "maybe_exists%0#0"
+      ]
+    },
+    "161": {
+      "error": "check self.total_funds exists",
+      "op": "assert // check self.total_funds exists",
+      "stack_out": [
+        "maybe_value%0#0"
+      ]
+    },
+    "162": {
+      "op": "itob",
+      "defined_out": [
+        "aggregate%val_as_bytes%0#0"
+      ],
+      "stack_out": [
+        "aggregate%val_as_bytes%0#0"
+      ]
+    },
+    "163": {
+      "op": "bytec_1 // 0x151f7c75",
+      "defined_out": [
+        "0x151f7c75",
+        "aggregate%val_as_bytes%0#0"
+      ],
+      "stack_out": [
+        "aggregate%val_as_bytes%0#0",
+        "0x151f7c75"
+      ]
+    },
+    "164": {
+      "op": "swap",
+      "stack_out": [
+        "0x151f7c75",
+        "aggregate%val_as_bytes%0#0"
+      ]
+    },
+    "165": {
+      "op": "concat",
+      "defined_out": [
+        "tmp%2#0"
+      ],
+      "stack_out": [
+        "tmp%2#0"
+      ]
+    },
+    "166": {
+      "op": "log",
+      "stack_out": []
+    },
+    "167": {
+      "op": "intc_1 // 1",
+      "defined_out": [
+        "1"
+      ],
+      "stack_out": [
+        "1"
+      ]
+    },
+    "168": {
+      "op": "return",
+      "stack_out": []
+    }
+  }
+}
