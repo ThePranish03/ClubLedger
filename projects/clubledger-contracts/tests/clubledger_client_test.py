@@ -16,7 +16,8 @@ from smart_contracts.artifacts.clubledger.clubledger_client import (
 def deployer(algorand_client: AlgorandClient) -> SigningAccount:
     account = algorand_client.account.from_environment("DEPLOYER")
     algorand_client.account.ensure_funded_from_environment(
-        account_to_fund=account.address, min_spending_balance=AlgoAmount.from_algo(10)
+        account_to_fund=account.address,
+        min_spending_balance=AlgoAmount.from_algo(10),
     )
     return account
 
@@ -26,30 +27,43 @@ def clubledger_client(
     algorand_client: AlgorandClient, deployer: SigningAccount
 ) -> ClubledgerClient:
     factory = algorand_client.client.get_typed_app_factory(
-        ClubledgerFactory, default_sender=deployer.address
+        ClubledgerFactory,
+        default_sender=deployer.address,
     )
 
     client, _ = factory.deploy(
         on_schema_break=algokit_utils.OnSchemaBreak.AppendApp,
         on_update=algokit_utils.OnUpdate.AppendApp,
     )
+
     return client
 
 
-def test_says_hello(clubledger_client: ClubledgerClient) -> None:
-    result = clubledger_client.send.hello(args=("World",))
-    assert result.abi_return == "Hello, World"
+def test_full_event_flow(clubledger_client: ClubledgerClient) -> None:
 
+    event_id = "event1"
 
-def test_simulate_says_hello_with_correct_budget_consumed(
-    clubledger_client: ClubledgerClient,
-) -> None:
-    result = (
-        clubledger_client.new_group()
-        .hello(args=("World",))
-        .hello(args=("Jane",))
-        .simulate()
-    )
-    assert result.returns[0].value == "Hello, World"
-    assert result.returns[1].value == "Hello, Jane"
-    assert result.simulate_response["txn-groups"][0]["app-budget-consumed"] < 100
+    # create event
+    clubledger_client.send.create_event(args=(event_id,))
+
+    # sponsor funds
+    clubledger_client.send.record_sponsor(args=(event_id, 500))
+
+    # ticket sales
+    clubledger_client.send.record_ticket_sale(args=(event_id, 200))
+
+    # allocate funds
+    clubledger_client.send.allocate_funds(args=(event_id, 600))
+
+    # vendor payment
+    clubledger_client.send.record_vendor_payment(args=(event_id, 600))
+
+    result = clubledger_client.send.get_event(args=(event_id,))
+
+    event = result.abi_return
+
+    assert event.total_sponsor_funds == 500
+    assert event.total_ticket_revenue == 200
+    assert event.allocated_amount == 600
+    assert event.spent_amount == 600
+    assert event.status == "COMPLETED"
